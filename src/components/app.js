@@ -1,9 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import SearchBar from '../containers/search_bar'
+import VideoDetail from '../containers/video_detail'
+import VideoList from '../containers/video_list'
 
-export default class App extends Component {
-  render() {
+const App = () => {
     return (
-      <div>React simple starter</div>
-    );
-  }
-}
+    <div>
+      <SearchBar />
+      <VideoDetail />
+      <VideoList />
+    </div>
+  );
+};
+
+export default App;

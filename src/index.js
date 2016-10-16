@@ -1,15 +1,17 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom';
+import { createStore , applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-
-import App from './components/app';
+import ReduxPromise from 'redux-promise';
+import createDebounce from 'redux-debounced';
 import reducers from './reducers';
+import App from './components/app';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+let storeWithMiddleware = applyMiddleware(ReduxPromise, createDebounce())(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+  <Provider store={storeWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
+    <App/>
+  </Provider>,
+   document.querySelector('.container')
+  );

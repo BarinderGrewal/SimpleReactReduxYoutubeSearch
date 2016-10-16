@@ -1,7 +1,10 @@
+import selectedVideoReducer from './selectedVideoReducer';
+import searchReducer from './searchReducer';
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({
-  state: (state = {}) => state
+const reducers = combineReducers({
+  searchVideo : searchReducer,
+  selectedVideo: selectedVideoReducer
 });
 
-export default rootReducer;
+export default reducers;
